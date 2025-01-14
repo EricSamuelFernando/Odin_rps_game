@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let Player_scr = 0;
+        let Comp_scr = 0;
+        
+        function getComputerChoice(){
+            let  x = Math.floor(Math.random()*3);
+            if (x == 0){
+                return "rock";
+            }
+            else if (x == 1){
+                return "paper";
+            }
+            else {
+                return "scissors";
+            }
+        }
+        function getHumanChoice(){
+            return prompt("Rock,Paper or Scissors");
+        }
+
+        function playRound(humanChoice,computerChoice){
+            humanChoice = humanChoice.toLowerCase();
+            if(humanChoice===computerChoice){
+                console.log("TIE");
+            }
+            else if((humanChoice==="rock" && computerChoice==="scissor")||(humanChoice==="paper"&&computerChoice==="rock")||((humanChoice==="scissors"||humanChoice==="scissor")&&computerChoice==="paper")){
+                Player_scr += 1;
+                console.log("Player wins this round!");
+            }
+            else{
+                Comp_scr +=1;
+                console.log("Computer wins this round!");
+            }
+    
+        }
+        function playGame(){
+            playRound(getHumanChoice(),getComputerChoice());
+            playRound(getHumanChoice(),getComputerChoice());
+            playRound(getHumanChoice(),getComputerChoice());
+            playRound(getHumanChoice(),getComputerChoice());
+            playRound(getHumanChoice(),getComputerChoice());
+            if (Player_scr == Comp_scr){
+                console.log("The game is a tie.");
+            }
+            else if (Player_scr > Comp_scr){
+                console.log("The Player wins.");
+                console.log(Player_scr);
+            }
+            else{
+                console.log("The Computer wins.");
+                console.log(Comp_scr);
+            }
+        }
+        playGame();
+    </script>
+</body>
+</html>
